@@ -36,71 +36,109 @@ module clfortran
     implicit none
 
     ! Error Codes
-    integer(c_int32_t), parameter :: CL_SUCCESS                                   =  0
-    integer(c_int32_t), parameter :: CL_DEVICE_NOT_FOUND                          = -1
-    integer(c_int32_t), parameter :: CL_DEVICE_NOT_AVAILABLE                      = -2
-    integer(c_int32_t), parameter :: CL_COMPILER_NOT_AVAILABLE                    = -3
-    integer(c_int32_t), parameter :: CL_MEM_OBJECT_ALLOCATION_FAILURE             = -4
-    integer(c_int32_t), parameter :: CL_OUT_OF_RESOURCES                          = -5
-    integer(c_int32_t), parameter :: CL_OUT_OF_HOST_MEMORY                        = -6
-    integer(c_int32_t), parameter :: CL_PROFILING_INFO_NOT_AVAILABLE              = -7
-    integer(c_int32_t), parameter :: CL_MEM_COPY_OVERLAP                          = -8
-    integer(c_int32_t), parameter :: CL_IMAGE_FORMAT_MISMATCH                     = -9
-    integer(c_int32_t), parameter :: CL_IMAGE_FORMAT_NOT_SUPPORTED                = -10
-    integer(c_int32_t), parameter :: CL_BUILD_PROGRAM_FAILURE                     = -11
-    integer(c_int32_t), parameter :: CL_MAP_FAILURE                               = -12
-    integer(c_int32_t), parameter :: CL_MISALIGNED_SUB_BUFFER_OFFSET              = -13
-    integer(c_int32_t), parameter :: CL_EXEC_STATUS_ERROR_FOR_EVENTS_IN_WAIT_LIST = -14
-    integer(c_int32_t), parameter :: CL_COMPILE_PROGRAM_FAILURE                   = -15
-    integer(c_int32_t), parameter :: CL_LINKER_NOT_AVAILABLE                      = -16
-    integer(c_int32_t), parameter :: CL_LINK_PROGRAM_FAILURE                      = -17
-    integer(c_int32_t), parameter :: CL_DEVICE_PARTITION_FAILED                   = -18
-    integer(c_int32_t), parameter :: CL_KERNEL_ARG_INFO_NOT_AVAILABLE             = -19
+    integer(c_int32_t), parameter :: CL_SUCCESS                                     =  0
+    integer(c_int32_t), parameter :: CL_DEVICE_NOT_FOUND                            = -1
+    integer(c_int32_t), parameter :: CL_DEVICE_NOT_AVAILABLE                        = -2
+    integer(c_int32_t), parameter :: CL_COMPILER_NOT_AVAILABLE                      = -3
+    integer(c_int32_t), parameter :: CL_MEM_OBJECT_ALLOCATION_FAILURE               = -4
+    integer(c_int32_t), parameter :: CL_OUT_OF_RESOURCES                            = -5
+    integer(c_int32_t), parameter :: CL_OUT_OF_HOST_MEMORY                          = -6
+    integer(c_int32_t), parameter :: CL_PROFILING_INFO_NOT_AVAILABLE                = -7
+    integer(c_int32_t), parameter :: CL_MEM_COPY_OVERLAP                            = -8
+    integer(c_int32_t), parameter :: CL_IMAGE_FORMAT_MISMATCH                       = -9
+    integer(c_int32_t), parameter :: CL_IMAGE_FORMAT_NOT_SUPPORTED                  = -10
+    integer(c_int32_t), parameter :: CL_BUILD_PROGRAM_FAILURE                       = -11
+    integer(c_int32_t), parameter :: CL_MAP_FAILURE                                 = -12
+    integer(c_int32_t), parameter :: CL_MISALIGNED_SUB_BUFFER_OFFSET                = -13
+    integer(c_int32_t), parameter :: CL_EXEC_STATUS_ERROR_FOR_EVENTS_IN_WAIT_LIST   = -14
+    integer(c_int32_t), parameter :: CL_COMPILE_PROGRAM_FAILURE                     = -15
+    integer(c_int32_t), parameter :: CL_LINKER_NOT_AVAILABLE                        = -16
+    integer(c_int32_t), parameter :: CL_LINK_PROGRAM_FAILURE                        = -17
+    integer(c_int32_t), parameter :: CL_DEVICE_PARTITION_FAILED                     = -18
+    integer(c_int32_t), parameter :: CL_KERNEL_ARG_INFO_NOT_AVAILABLE               = -19
 
-    integer(c_int32_t), parameter :: CL_INVALID_VALUE                             = -30
-    integer(c_int32_t), parameter :: CL_INVALID_DEVICE_TYPE                       = -31
-    integer(c_int32_t), parameter :: CL_INVALID_PLATFORM                          = -32
-    integer(c_int32_t), parameter :: CL_INVALID_DEVICE                            = -33
-    integer(c_int32_t), parameter :: CL_INVALID_CONTEXT                           = -34
-    integer(c_int32_t), parameter :: CL_INVALID_QUEUE_PROPERTIES                  = -35
-    integer(c_int32_t), parameter :: CL_INVALID_COMMAND_QUEUE                     = -36
-    integer(c_int32_t), parameter :: CL_INVALID_HOST_PTR                          = -37
-    integer(c_int32_t), parameter :: CL_INVALID_MEM_OBJECT                        = -38
-    integer(c_int32_t), parameter :: CL_INVALID_IMAGE_FORMAT_DESCRIPTOR           = -39
-    integer(c_int32_t), parameter :: CL_INVALID_IMAGE_SIZE                        = -40
-    integer(c_int32_t), parameter :: CL_INVALID_SAMPLER                           = -41
-    integer(c_int32_t), parameter :: CL_INVALID_BINARY                            = -42
-    integer(c_int32_t), parameter :: CL_INVALID_BUILD_OPTIONS                     = -43
-    integer(c_int32_t), parameter :: CL_INVALID_PROGRAM                           = -44
-    integer(c_int32_t), parameter :: CL_INVALID_PROGRAM_EXECUTABLE                = -45
-    integer(c_int32_t), parameter :: CL_INVALID_KERNEL_NAME                       = -46
-    integer(c_int32_t), parameter :: CL_INVALID_KERNEL_DEFINITION                 = -47
-    integer(c_int32_t), parameter :: CL_INVALID_KERNEL                            = -48
-    integer(c_int32_t), parameter :: CL_INVALID_ARG_INDEX                         = -49
-    integer(c_int32_t), parameter :: CL_INVALID_ARG_VALUE                         = -50
-    integer(c_int32_t), parameter :: CL_INVALID_ARG_SIZE                          = -51
-    integer(c_int32_t), parameter :: CL_INVALID_KERNEL_ARGS                       = -52
-    integer(c_int32_t), parameter :: CL_INVALID_WORK_DIMENSION                    = -53
-    integer(c_int32_t), parameter :: CL_INVALID_WORK_GROUP_SIZE                   = -54
-    integer(c_int32_t), parameter :: CL_INVALID_WORK_ITEM_SIZE                    = -55
-    integer(c_int32_t), parameter :: CL_INVALID_GLOBAL_OFFSET                     = -56
-    integer(c_int32_t), parameter :: CL_INVALID_EVENT_WAIT_LIST                   = -57
-    integer(c_int32_t), parameter :: CL_INVALID_EVENT                             = -58
-    integer(c_int32_t), parameter :: CL_INVALID_OPERATION                         = -59
-    integer(c_int32_t), parameter :: CL_INVALID_GL_OBJECT                         = -60
-    integer(c_int32_t), parameter :: CL_INVALID_BUFFER_SIZE                       = -61
-    integer(c_int32_t), parameter :: CL_INVALID_MIP_LEVEL                         = -62
-    integer(c_int32_t), parameter :: CL_INVALID_GLOBAL_WORK_SIZE                  = -63
-    integer(c_int32_t), parameter :: CL_INVALID_PROPERTY                          = -64
-    integer(c_int32_t), parameter :: CL_INVALID_IMAGE_DESCRIPTOR                  = -65
-    integer(c_int32_t), parameter :: CL_INVALID_COMPILER_OPTIONS                  = -66
-    integer(c_int32_t), parameter :: CL_INVALID_LINKER_OPTIONS                    = -67
-    integer(c_int32_t), parameter :: CL_INVALID_DEVICE_PARTITION_COUNT            = -68
-    
+    integer(c_int32_t), parameter :: CL_INVALID_VALUE                               = -30
+    integer(c_int32_t), parameter :: CL_INVALID_DEVICE_TYPE                         = -31
+    integer(c_int32_t), parameter :: CL_INVALID_PLATFORM                            = -32
+    integer(c_int32_t), parameter :: CL_INVALID_DEVICE                              = -33
+    integer(c_int32_t), parameter :: CL_INVALID_CONTEXT                             = -34
+    integer(c_int32_t), parameter :: CL_INVALID_QUEUE_PROPERTIES                    = -35
+    integer(c_int32_t), parameter :: CL_INVALID_COMMAND_QUEUE                       = -36
+    integer(c_int32_t), parameter :: CL_INVALID_HOST_PTR                            = -37
+    integer(c_int32_t), parameter :: CL_INVALID_MEM_OBJECT                          = -38
+    integer(c_int32_t), parameter :: CL_INVALID_IMAGE_FORMAT_DESCRIPTOR             = -39
+    integer(c_int32_t), parameter :: CL_INVALID_IMAGE_SIZE                          = -40
+    integer(c_int32_t), parameter :: CL_INVALID_SAMPLER                             = -41
+    integer(c_int32_t), parameter :: CL_INVALID_BINARY                              = -42
+    integer(c_int32_t), parameter :: CL_INVALID_BUILD_OPTIONS                       = -43
+    integer(c_int32_t), parameter :: CL_INVALID_PROGRAM                             = -44
+    integer(c_int32_t), parameter :: CL_INVALID_PROGRAM_EXECUTABLE                  = -45
+    integer(c_int32_t), parameter :: CL_INVALID_KERNEL_NAME                         = -46
+    integer(c_int32_t), parameter :: CL_INVALID_KERNEL_DEFINITION                   = -47
+    integer(c_int32_t), parameter :: CL_INVALID_KERNEL                              = -48
+    integer(c_int32_t), parameter :: CL_INVALID_ARG_INDEX                           = -49
+    integer(c_int32_t), parameter :: CL_INVALID_ARG_VALUE                           = -50
+    integer(c_int32_t), parameter :: CL_INVALID_ARG_SIZE                            = -51
+    integer(c_int32_t), parameter :: CL_INVALID_KERNEL_ARGS                         = -52
+    integer(c_int32_t), parameter :: CL_INVALID_WORK_DIMENSION                      = -53
+    integer(c_int32_t), parameter :: CL_INVALID_WORK_GROUP_SIZE                     = -54
+    integer(c_int32_t), parameter :: CL_INVALID_WORK_ITEM_SIZE                      = -55
+    integer(c_int32_t), parameter :: CL_INVALID_GLOBAL_OFFSET                       = -56
+    integer(c_int32_t), parameter :: CL_INVALID_EVENT_WAIT_LIST                     = -57
+    integer(c_int32_t), parameter :: CL_INVALID_EVENT                               = -58
+    integer(c_int32_t), parameter :: CL_INVALID_OPERATION                           = -59
+    integer(c_int32_t), parameter :: CL_INVALID_GL_OBJECT                           = -60
+    integer(c_int32_t), parameter :: CL_INVALID_BUFFER_SIZE                         = -61
+    integer(c_int32_t), parameter :: CL_INVALID_MIP_LEVEL                           = -62
+    integer(c_int32_t), parameter :: CL_INVALID_GLOBAL_WORK_SIZE                    = -63
+    integer(c_int32_t), parameter :: CL_INVALID_PROPERTY                            = -64
+    integer(c_int32_t), parameter :: CL_INVALID_IMAGE_DESCRIPTOR                    = -65
+    integer(c_int32_t), parameter :: CL_INVALID_COMPILER_OPTIONS                    = -66
+    integer(c_int32_t), parameter :: CL_INVALID_LINKER_OPTIONS                      = -67
+    integer(c_int32_t), parameter :: CL_INVALID_DEVICE_PARTITION_COUNT              = -68
+    integer(c_int32_t), parameter :: CL_INVALID_PIPE_SIZE                           = -69
+    integer(c_int32_t), parameter :: CL_INVALID_DEVICE_QUEUE                        = -70
+    integer(c_int32_t), parameter :: CL_INVALID_SPEC_ID                             = -71
+    integer(c_int32_t), parameter :: CL_MAX_SIZE_RESTRICTION_EXCEEDED               = -72
+    ! Errors thrown by extensions
+    integer(c_int32_t), parameter :: CL_INVALID_GL_SHAREGROUP_REFERENCE_KHR         = -1000
+    integer(c_int32_t), parameter :: CL_PLATFORM_NOT_FOUND_KHR                      = -1001
+    integer(c_int32_t), parameter :: CL_INVALID_D3D10_DEVICE_KHR                    = -1002
+    integer(c_int32_t), parameter :: CL_INVALID_D3D10_RESOURCE_KHR                  = -1003
+    integer(c_int32_t), parameter :: CL_D3D10_RESOURCE_ALREADY_ACQUIRED_KHR         = -1004
+    integer(c_int32_t), parameter :: CL_D3D10_RESOURCE_NOT_ACQUIRED_KHR             = -1005
+    integer(c_int32_t), parameter :: CL_INVALID_D3D11_DEVICE_KHR                    = -1006
+    integer(c_int32_t), parameter :: CL_INVALID_D3D11_RESOURCE_KHR                  = -1007
+    integer(c_int32_t), parameter :: CL_D3D11_RESOURCE_ALREADY_ACQUIRED_KHR         = -1008
+    integer(c_int32_t), parameter :: CL_D3D11_RESOURCE_NOT_ACQUIRED_KHR             = -1009
+    integer(c_int32_t), parameter :: CL_INVALID_D3D9_DEVICE_NV                      = -1010
+    integer(c_int32_t), parameter :: CL_INVALID_DX9_DEVICE_INTEL                    = CL_INVALID_D3D9_DEVICE_NV
+    integer(c_int32_t), parameter :: CL_INVALID_D3D9_RESOURCE_NV                    = -1011
+    integer(c_int32_t), parameter :: CL_INVALID_DX9_RESOURCE_INTEL                  = CL_INVALID_D3D9_RESOURCE_NV
+    integer(c_int32_t), parameter :: CL_D3D9_RESOURCE_ALREADY_ACQUIRED_NV           = -1012
+    integer(c_int32_t), parameter :: CL_DX9_RESOURCE_ALREADY_ACQUIRED_INTEL         = CL_D3D9_RESOURCE_ALREADY_ACQUIRED_NV
+    integer(c_int32_t), parameter :: CL_D3D9_RESOURCE_NOT_ACQUIRED_NV               = -1013
+    integer(c_int32_t), parameter :: CL_DX9_RESOURCE_NOT_ACQUIRED_INTEL             = CL_D3D9_RESOURCE_NOT_ACQUIRED_NV
+    integer(c_int32_t), parameter :: CL_EGL_RESOURCE_NOT_ACQUIRED_KHR               = -1092
+    integer(c_int32_t), parameter :: CL_INVALID_EGL_OBJECT_KHR                      = -1093
+    integer(c_int32_t), parameter :: CL_INVALID_ACCELERATOR_INTEL                   = -1094
+    integer(c_int32_t), parameter :: CL_INVALID_ACCELERATOR_TYPE_INTEL              = -1095
+    integer(c_int32_t), parameter :: CL_INVALID_ACCELERATOR_DESCRIPTOR_INTEL        = -1096
+    integer(c_int32_t), parameter :: CL_ACCELERATOR_TYPE_NOT_SUPPORTED_INTEL        = -1097
+    integer(c_int32_t), parameter :: CL_INVALID_VA_API_MEDIA_ADAPTER_INTEL          = -1098
+    integer(c_int32_t), parameter :: CL_INVALID_VA_API_MEDIA_SURFACE_INTEL          = -1099
+    integer(c_int32_t), parameter :: CL_VA_API_MEDIA_SURFACE_ALREADY_ACQUIRED_INTEL = -1100
+    integer(c_int32_t), parameter :: CL_VA_API_MEDIA_SURFACE_NOT_ACQUIRED_INTEL     = -1101
+    ! Errors thrown by vendors
+    integer(c_int32_t), parameter :: CL_ILLEGAL_READ_OR_WRITE_TO_A_BUFFER_NV        = -9999
+
     ! OpenCL Version
     integer(c_int32_t), parameter :: CL_VERSION_1_0                               = 1
     integer(c_int32_t), parameter :: CL_VERSION_1_1                               = 1
     integer(c_int32_t), parameter :: CL_VERSION_1_2                               = 1
+    integer(c_int32_t), parameter :: CL_VERSION_2_0                               = 1
+    integer(c_int32_t), parameter :: CL_VERSION_2_1                               = 1
+    integer(c_int32_t), parameter :: CL_VERSION_2_2                               = 1
 
     ! cl_bool
     integer(c_int32_t), parameter :: CL_FALSE                                     = 0
@@ -114,6 +152,7 @@ module clfortran
     integer(c_int32_t), parameter :: CL_PLATFORM_NAME                           = Z'0902'
     integer(c_int32_t), parameter :: CL_PLATFORM_VENDOR                         = Z'0903'
     integer(c_int32_t), parameter :: CL_PLATFORM_EXTENSIONS                     = Z'0904'
+    integer(c_int32_t), parameter :: CL_PLATFORM_HOST_TIMER_RESOLUTION          = Z'0905'
 
     ! cl_device_type - bitfield
     integer(c_int64_t), parameter :: CL_DEVICE_TYPE_DEFAULT                     = b'00001'
@@ -124,82 +163,121 @@ module clfortran
     integer(c_int64_t), parameter :: CL_DEVICE_TYPE_ALL                         = Z'FFFFFFFF'
 
     ! cl_device_info
-    integer(c_int32_t), parameter :: CL_DEVICE_TYPE                             = Z'1000'
-    integer(c_int32_t), parameter :: CL_DEVICE_VENDOR_ID                        = Z'1001'
-    integer(c_int32_t), parameter :: CL_DEVICE_MAX_COMPUTE_UNITS                = Z'1002'
-    integer(c_int32_t), parameter :: CL_DEVICE_MAX_WORK_ITEM_DIMENSIONS         = Z'1003'
-    integer(c_int32_t), parameter :: CL_DEVICE_MAX_WORK_GROUP_SIZE              = Z'1004'
-    integer(c_int32_t), parameter :: CL_DEVICE_MAX_WORK_ITEM_SIZES              = Z'1005'
-    integer(c_int32_t), parameter :: CL_DEVICE_PREFERRED_VECTOR_WIDTH_CHAR      = Z'1006'
-    integer(c_int32_t), parameter :: CL_DEVICE_PREFERRED_VECTOR_WIDTH_SHORT     = Z'1007'
-    integer(c_int32_t), parameter :: CL_DEVICE_PREFERRED_VECTOR_WIDTH_INT       = Z'1008'
-    integer(c_int32_t), parameter :: CL_DEVICE_PREFERRED_VECTOR_WIDTH_LONG      = Z'1009'
-    integer(c_int32_t), parameter :: CL_DEVICE_PREFERRED_VECTOR_WIDTH_FLOAT     = Z'100A'
-    integer(c_int32_t), parameter :: CL_DEVICE_PREFERRED_VECTOR_WIDTH_DOUBLE    = Z'100B'
-    integer(c_int32_t), parameter :: CL_DEVICE_MAX_CLOCK_FREQUENCY              = Z'100C'
-    integer(c_int32_t), parameter :: CL_DEVICE_ADDRESS_BITS                     = Z'100D'
-    integer(c_int32_t), parameter :: CL_DEVICE_MAX_READ_IMAGE_ARGS              = Z'100E'
-    integer(c_int32_t), parameter :: CL_DEVICE_MAX_WRITE_IMAGE_ARGS             = Z'100F'
-    integer(c_int32_t), parameter :: CL_DEVICE_MAX_MEM_ALLOC_SIZE               = Z'1010'
-    integer(c_int32_t), parameter :: CL_DEVICE_IMAGE2D_MAX_WIDTH                = Z'1011'
-    integer(c_int32_t), parameter :: CL_DEVICE_IMAGE2D_MAX_HEIGHT               = Z'1012'
-    integer(c_int32_t), parameter :: CL_DEVICE_IMAGE3D_MAX_WIDTH                = Z'1013'
-    integer(c_int32_t), parameter :: CL_DEVICE_IMAGE3D_MAX_HEIGHT               = Z'1014'
-    integer(c_int32_t), parameter :: CL_DEVICE_IMAGE3D_MAX_DEPTH                = Z'1015'
-    integer(c_int32_t), parameter :: CL_DEVICE_IMAGE_SUPPORT                    = Z'1016'
-    integer(c_int32_t), parameter :: CL_DEVICE_MAX_PARAMETER_SIZE               = Z'1017'
-    integer(c_int32_t), parameter :: CL_DEVICE_MAX_SAMPLERS                     = Z'1018'
-    integer(c_int32_t), parameter :: CL_DEVICE_MEM_BASE_ADDR_ALIGN              = Z'1019'
-    integer(c_int32_t), parameter :: CL_DEVICE_MIN_DATA_TYPE_ALIGN_SIZE         = Z'101A'
-    integer(c_int32_t), parameter :: CL_DEVICE_SINGLE_FP_CONFIG                 = Z'101B'
-    integer(c_int32_t), parameter :: CL_DEVICE_GLOBAL_MEM_CACHE_TYPE            = Z'101C'
-    integer(c_int32_t), parameter :: CL_DEVICE_GLOBAL_MEM_CACHELINE_SIZE        = Z'101D'
-    integer(c_int32_t), parameter :: CL_DEVICE_GLOBAL_MEM_CACHE_SIZE            = Z'101E'
-    integer(c_int32_t), parameter :: CL_DEVICE_GLOBAL_MEM_SIZE                  = Z'101F'
-    integer(c_int32_t), parameter :: CL_DEVICE_MAX_CONSTANT_BUFFER_SIZE         = Z'1020'
-    integer(c_int32_t), parameter :: CL_DEVICE_MAX_CONSTANT_ARGS                = Z'1021'
-    integer(c_int32_t), parameter :: CL_DEVICE_LOCAL_MEM_TYPE                   = Z'1022'
-    integer(c_int32_t), parameter :: CL_DEVICE_LOCAL_MEM_SIZE                   = Z'1023'
-    integer(c_int32_t), parameter :: CL_DEVICE_ERROR_CORRECTION_SUPPORT         = Z'1024'
-    integer(c_int32_t), parameter :: CL_DEVICE_PROFILING_TIMER_RESOLUTION       = Z'1025'
-    integer(c_int32_t), parameter :: CL_DEVICE_ENDIAN_LITTLE                    = Z'1026'
-    integer(c_int32_t), parameter :: CL_DEVICE_AVAILABLE                        = Z'1027'
-    integer(c_int32_t), parameter :: CL_DEVICE_COMPILER_AVAILABLE               = Z'1028'
-    integer(c_int32_t), parameter :: CL_DEVICE_EXECUTION_CAPABILITIES           = Z'1029'
-    integer(c_int32_t), parameter :: CL_DEVICE_QUEUE_PROPERTIES                 = Z'102A'
-    integer(c_int32_t), parameter :: CL_DEVICE_NAME                             = Z'102B'
-    integer(c_int32_t), parameter :: CL_DEVICE_VENDOR                           = Z'102C'
-    integer(c_int32_t), parameter :: CL_DRIVER_VERSION                          = Z'102D'
-    integer(c_int32_t), parameter :: CL_DEVICE_PROFILE                          = Z'102E'
-    integer(c_int32_t), parameter :: CL_DEVICE_VERSION                          = Z'102F'
-    integer(c_int32_t), parameter :: CL_DEVICE_EXTENSIONS                       = Z'1030'
-    integer(c_int32_t), parameter :: CL_DEVICE_PLATFORM                         = Z'1031'
-    integer(c_int32_t), parameter :: CL_DEVICE_DOUBLE_FP_CONFIG                 = Z'1032'
+    integer(c_int32_t), parameter :: CL_DEVICE_TYPE                                   = Z'1000'
+    integer(c_int32_t), parameter :: CL_DEVICE_VENDOR_ID                              = Z'1001'
+    integer(c_int32_t), parameter :: CL_DEVICE_MAX_COMPUTE_UNITS                      = Z'1002'
+    integer(c_int32_t), parameter :: CL_DEVICE_MAX_WORK_ITEM_DIMENSIONS               = Z'1003'
+    integer(c_int32_t), parameter :: CL_DEVICE_MAX_WORK_GROUP_SIZE                    = Z'1004'
+    integer(c_int32_t), parameter :: CL_DEVICE_MAX_WORK_ITEM_SIZES                    = Z'1005'
+    integer(c_int32_t), parameter :: CL_DEVICE_PREFERRED_VECTOR_WIDTH_CHAR            = Z'1006'
+    integer(c_int32_t), parameter :: CL_DEVICE_PREFERRED_VECTOR_WIDTH_SHORT           = Z'1007'
+    integer(c_int32_t), parameter :: CL_DEVICE_PREFERRED_VECTOR_WIDTH_INT             = Z'1008'
+    integer(c_int32_t), parameter :: CL_DEVICE_PREFERRED_VECTOR_WIDTH_LONG            = Z'1009'
+    integer(c_int32_t), parameter :: CL_DEVICE_PREFERRED_VECTOR_WIDTH_FLOAT           = Z'100A'
+    integer(c_int32_t), parameter :: CL_DEVICE_PREFERRED_VECTOR_WIDTH_DOUBLE          = Z'100B'
+    integer(c_int32_t), parameter :: CL_DEVICE_MAX_CLOCK_FREQUENCY                    = Z'100C'
+    integer(c_int32_t), parameter :: CL_DEVICE_ADDRESS_BITS                           = Z'100D'
+    integer(c_int32_t), parameter :: CL_DEVICE_MAX_READ_IMAGE_ARGS                    = Z'100E'
+    integer(c_int32_t), parameter :: CL_DEVICE_MAX_WRITE_IMAGE_ARGS                   = Z'100F'
+    integer(c_int32_t), parameter :: CL_DEVICE_MAX_MEM_ALLOC_SIZE                     = Z'1010'
+    integer(c_int32_t), parameter :: CL_DEVICE_IMAGE2D_MAX_WIDTH                      = Z'1011'
+    integer(c_int32_t), parameter :: CL_DEVICE_IMAGE2D_MAX_HEIGHT                     = Z'1012'
+    integer(c_int32_t), parameter :: CL_DEVICE_IMAGE3D_MAX_WIDTH                      = Z'1013'
+    integer(c_int32_t), parameter :: CL_DEVICE_IMAGE3D_MAX_HEIGHT                     = Z'1014'
+    integer(c_int32_t), parameter :: CL_DEVICE_IMAGE3D_MAX_DEPTH                      = Z'1015'
+    integer(c_int32_t), parameter :: CL_DEVICE_IMAGE_SUPPORT                          = Z'1016'
+    integer(c_int32_t), parameter :: CL_DEVICE_MAX_PARAMETER_SIZE                     = Z'1017'
+    integer(c_int32_t), parameter :: CL_DEVICE_MAX_SAMPLERS                           = Z'1018'
+    integer(c_int32_t), parameter :: CL_DEVICE_MEM_BASE_ADDR_ALIGN                    = Z'1019'
+    integer(c_int32_t), parameter :: CL_DEVICE_MIN_DATA_TYPE_ALIGN_SIZE               = Z'101A'
+    integer(c_int32_t), parameter :: CL_DEVICE_SINGLE_FP_CONFIG                       = Z'101B'
+    integer(c_int32_t), parameter :: CL_DEVICE_GLOBAL_MEM_CACHE_TYPE                  = Z'101C'
+    integer(c_int32_t), parameter :: CL_DEVICE_GLOBAL_MEM_CACHELINE_SIZE              = Z'101D'
+    integer(c_int32_t), parameter :: CL_DEVICE_GLOBAL_MEM_CACHE_SIZE                  = Z'101E'
+    integer(c_int32_t), parameter :: CL_DEVICE_GLOBAL_MEM_SIZE                        = Z'101F'
+    integer(c_int32_t), parameter :: CL_DEVICE_MAX_CONSTANT_BUFFER_SIZE               = Z'1020'
+    integer(c_int32_t), parameter :: CL_DEVICE_MAX_CONSTANT_ARGS                      = Z'1021'
+    integer(c_int32_t), parameter :: CL_DEVICE_LOCAL_MEM_TYPE                         = Z'1022'
+    integer(c_int32_t), parameter :: CL_DEVICE_LOCAL_MEM_SIZE                         = Z'1023'
+    integer(c_int32_t), parameter :: CL_DEVICE_ERROR_CORRECTION_SUPPORT               = Z'1024'
+    integer(c_int32_t), parameter :: CL_DEVICE_PROFILING_TIMER_RESOLUTION             = Z'1025'
+    integer(c_int32_t), parameter :: CL_DEVICE_ENDIAN_LITTLE                          = Z'1026'
+    integer(c_int32_t), parameter :: CL_DEVICE_AVAILABLE                              = Z'1027'
+    integer(c_int32_t), parameter :: CL_DEVICE_COMPILER_AVAILABLE                     = Z'1028'
+    integer(c_int32_t), parameter :: CL_DEVICE_EXECUTION_CAPABILITIES                 = Z'1029'
+    integer(c_int32_t), parameter :: CL_DEVICE_QUEUE_PROPERTIES                       = Z'102A'    ! deprecated
+    integer(c_int32_t), parameter :: CL_DEVICE_QUEUE_ON_HOST_PROPERTIES               = Z'102A'
+    integer(c_int32_t), parameter :: CL_DEVICE_NAME                                   = Z'102B'
+    integer(c_int32_t), parameter :: CL_DEVICE_VENDOR                                 = Z'102C'
+    integer(c_int32_t), parameter :: CL_DRIVER_VERSION                                = Z'102D'
+    integer(c_int32_t), parameter :: CL_DEVICE_PROFILE                                = Z'102E'
+    integer(c_int32_t), parameter :: CL_DEVICE_VERSION                                = Z'102F'
+    integer(c_int32_t), parameter :: CL_DEVICE_EXTENSIONS                             = Z'1030'
+    integer(c_int32_t), parameter :: CL_DEVICE_PLATFORM                               = Z'1031'
+    integer(c_int32_t), parameter :: CL_DEVICE_DOUBLE_FP_CONFIG                       = Z'1032'
     ! 0x1033 reserved for CL_DEVICE_HALF_FP_CONFIG
-    integer(c_int32_t), parameter :: CL_DEVICE_PREFERRED_VECTOR_WIDTH_HALF      = Z'1034'
-    integer(c_int32_t), parameter :: CL_DEVICE_HOST_UNIFIED_MEMORY              = Z'1035'
-    integer(c_int32_t), parameter :: CL_DEVICE_NATIVE_VECTOR_WIDTH_CHAR         = Z'1036'
-    integer(c_int32_t), parameter :: CL_DEVICE_NATIVE_VECTOR_WIDTH_SHORT        = Z'1037'
-    integer(c_int32_t), parameter :: CL_DEVICE_NATIVE_VECTOR_WIDTH_INT          = Z'1038'
-    integer(c_int32_t), parameter :: CL_DEVICE_NATIVE_VECTOR_WIDTH_LONG         = Z'1039'
-    integer(c_int32_t), parameter :: CL_DEVICE_NATIVE_VECTOR_WIDTH_FLOAT        = Z'103A'
-    integer(c_int32_t), parameter :: CL_DEVICE_NATIVE_VECTOR_WIDTH_DOUBLE       = Z'103B'
-    integer(c_int32_t), parameter :: CL_DEVICE_NATIVE_VECTOR_WIDTH_HALF         = Z'103C'
-    integer(c_int32_t), parameter :: CL_DEVICE_OPENCL_C_VERSION                 = Z'103D'
-    integer(c_int32_t), parameter :: CL_DEVICE_LINKER_AVAILABLE                 = Z'103E'
-    integer(c_int32_t), parameter :: CL_DEVICE_BUILT_IN_KERNELS                 = Z'103F'
-    integer(c_int32_t), parameter :: CL_DEVICE_IMAGE_MAX_BUFFER_SIZE            = Z'1040'
-    integer(c_int32_t), parameter :: CL_DEVICE_IMAGE_MAX_ARRAY_SIZE             = Z'1041'
-    integer(c_int32_t), parameter :: CL_DEVICE_PARENT_DEVICE                    = Z'1042'
-    integer(c_int32_t), parameter :: CL_DEVICE_PARTITION_MAX_SUB_DEVICES        = Z'1043'
-    integer(c_int32_t), parameter :: CL_DEVICE_PARTITION_PROPERTIES             = Z'1044'
-    integer(c_int32_t), parameter :: CL_DEVICE_PARTITION_AFFINITY_DOMAIN        = Z'1045'
-    integer(c_int32_t), parameter :: CL_DEVICE_PARTITION_TYPE                   = Z'1046'
-    integer(c_int32_t), parameter :: CL_DEVICE_REFERENCE_COUNT                  = Z'1047'
-    integer(c_int32_t), parameter :: CL_DEVICE_PREFERRED_INTEROP_USER_SYNC      = Z'1048'
-    integer(c_int32_t), parameter :: CL_DEVICE_PRINTF_BUFFER_SIZE               = Z'1049'
-    integer(c_int32_t), parameter :: CL_DEVICE_IMAGE_PITCH_ALIGNMENT            = Z'104A'
-    integer(c_int32_t), parameter :: CL_DEVICE_IMAGE_BASE_ADDRESS_ALIGNMENT     = Z'104B'
+    integer(c_int32_t), parameter :: CL_DEVICE_PREFERRED_VECTOR_WIDTH_HALF            = Z'1034'
+    integer(c_int32_t), parameter :: CL_DEVICE_HOST_UNIFIED_MEMORY                    = Z'1035'
+    integer(c_int32_t), parameter :: CL_DEVICE_NATIVE_VECTOR_WIDTH_CHAR               = Z'1036'
+    integer(c_int32_t), parameter :: CL_DEVICE_NATIVE_VECTOR_WIDTH_SHORT              = Z'1037'
+    integer(c_int32_t), parameter :: CL_DEVICE_NATIVE_VECTOR_WIDTH_INT                = Z'1038'
+    integer(c_int32_t), parameter :: CL_DEVICE_NATIVE_VECTOR_WIDTH_LONG               = Z'1039'
+    integer(c_int32_t), parameter :: CL_DEVICE_NATIVE_VECTOR_WIDTH_FLOAT              = Z'103A'
+    integer(c_int32_t), parameter :: CL_DEVICE_NATIVE_VECTOR_WIDTH_DOUBLE             = Z'103B'
+    integer(c_int32_t), parameter :: CL_DEVICE_NATIVE_VECTOR_WIDTH_HALF               = Z'103C'
+    integer(c_int32_t), parameter :: CL_DEVICE_OPENCL_C_VERSION                       = Z'103D'
+    integer(c_int32_t), parameter :: CL_DEVICE_LINKER_AVAILABLE                       = Z'103E'
+    integer(c_int32_t), parameter :: CL_DEVICE_BUILT_IN_KERNELS                       = Z'103F'
+    integer(c_int32_t), parameter :: CL_DEVICE_IMAGE_MAX_BUFFER_SIZE                  = Z'1040'
+    integer(c_int32_t), parameter :: CL_DEVICE_IMAGE_MAX_ARRAY_SIZE                   = Z'1041'
+    integer(c_int32_t), parameter :: CL_DEVICE_PARENT_DEVICE                          = Z'1042'
+    integer(c_int32_t), parameter :: CL_DEVICE_PARTITION_MAX_SUB_DEVICES              = Z'1043'
+    integer(c_int32_t), parameter :: CL_DEVICE_PARTITION_PROPERTIES                   = Z'1044'
+    integer(c_int32_t), parameter :: CL_DEVICE_PARTITION_AFFINITY_DOMAIN              = Z'1045'
+    integer(c_int32_t), parameter :: CL_DEVICE_PARTITION_TYPE                         = Z'1046'
+    integer(c_int32_t), parameter :: CL_DEVICE_REFERENCE_COUNT                        = Z'1047'
+    integer(c_int32_t), parameter :: CL_DEVICE_PREFERRED_INTEROP_USER_SYNC            = Z'1048'
+    integer(c_int32_t), parameter :: CL_DEVICE_PRINTF_BUFFER_SIZE                     = Z'1049'
+    integer(c_int32_t), parameter :: CL_DEVICE_IMAGE_PITCH_ALIGNMENT                  = Z'104A'
+    integer(c_int32_t), parameter :: CL_DEVICE_IMAGE_BASE_ADDRESS_ALIGNMENT           = Z'104B'
+    integer(c_int32_t), parameter :: CL_DEVICE_MAX_READ_WRITE_IMAGE_ARGS              = Z'104C'
+    integer(c_int32_t), parameter :: CL_DEVICE_MAX_GLOBAL_VARIABLE_SIZE               = Z'104D'
+    integer(c_int32_t), parameter :: CL_DEVICE_QUEUE_ON_DEVICE_PROPERTIES             = Z'104E'
+    integer(c_int32_t), parameter :: CL_DEVICE_QUEUE_ON_DEVICE_PREFERRED_SIZE         = Z'104F'
+    integer(c_int32_t), parameter :: CL_DEVICE_QUEUE_ON_DEVICE_MAX_SIZE               = Z'1050'
+    integer(c_int32_t), parameter :: CL_DEVICE_MAX_ON_DEVICE_QUEUES                   = Z'1051'
+    integer(c_int32_t), parameter :: CL_DEVICE_MAX_ON_DEVICE_EVENTS                   = Z'1052'
+    integer(c_int32_t), parameter :: CL_DEVICE_SVM_CAPABILITIES                       = Z'1053'
+    integer(c_int32_t), parameter :: CL_DEVICE_GLOBAL_VARIABLE_PREFERRED_TOTAL_SIZE   = Z'1054'
+    integer(c_int32_t), parameter :: CL_DEVICE_MAX_PIPE_ARGS                          = Z'1055'
+    integer(c_int32_t), parameter :: CL_DEVICE_PIPE_MAX_ACTIVE_RESERVATIONS           = Z'1056'
+    integer(c_int32_t), parameter :: CL_DEVICE_PIPE_MAX_PACKET_SIZE                   = Z'1057'
+    integer(c_int32_t), parameter :: CL_DEVICE_PREFERRED_PLATFORM_ATOMIC_ALIGNMENT    = Z'1058'
+    integer(c_int32_t), parameter :: CL_DEVICE_PREFERRED_GLOBAL_ATOMIC_ALIGNMENT      = Z'1059'
+    integer(c_int32_t), parameter :: CL_DEVICE_PREFERRED_LOCAL_ATOMIC_ALIGNMENT       = Z'105A'
+    integer(c_int32_t), parameter :: CL_DEVICE_IL_VERSION                             = Z'105B'
+    integer(c_int32_t), parameter :: CL_DEVICE_MAX_NUM_SUB_GROUPS                     = Z'105C'
+    integer(c_int32_t), parameter :: CL_DEVICE_SUB_GROUP_INDEPENDENT_FORWARD_PROGRESS = Z'105D'
+    
+    ! cl_device_partition_property
+    integer(c_int32_t), parameter :: CL_DEVICE_PARTITION_EQUALLY                = Z'1086'
+    integer(c_int32_t), parameter :: CL_DEVICE_PARTITION_BY_COUNTS              = Z'1087'
+    integer(c_int32_t), parameter :: CL_DEVICE_PARTITION_BY_COUNTS_LIST_END     = Z'0000'
+    integer(c_int32_t), parameter :: CL_DEVICE_PARTITION_BY_AFFINITY_DOMAIN     = Z'1088'
+
+    ! cl_device_affinity_domain
+    integer(c_int32_t), parameter :: CL_DEVICE_AFFINITY_DOMAIN_NUMA       = b'000000001'
+    integer(c_int32_t), parameter :: CL_DEVICE_AFFINITY_DOMAIN_L4_CACHE   = b'000000010'
+    integer(c_int32_t), parameter :: CL_DEVICE_AFFINITY_DOMAIN_L3_CACHE   = b'000000100'
+    integer(c_int32_t), parameter :: CL_DEVICE_AFFINITY_DOMAIN_L2_CACHE   = b'000001000'
+    integer(c_int32_t), parameter :: CL_DEVICE_AFFINITY_DOMAIN_L1_CACHE   = b'000010000'
+    integer(c_int32_t), parameter :: CL_DEVICE_AFFINITY_DOMAIN_NEXT_PARTITIONABLE = b'000100000'
+
+    ! cl_device_svm_capabilities
+    integer(c_int32_t), parameter :: CL_DEVICE_SVM_COARSE_GRAIN_BUFFER    = b'000000001'
+    integer(c_int32_t), parameter :: CL_DEVICE_SVM_FINE_GRAIN_BUFFER      = b'000000010'
+    integer(c_int32_t), parameter :: CL_DEVICE_SVM_FINE_GRAIN_SYSTEM      = b'000000100'
+    integer(c_int32_t), parameter :: CL_DEVICE_SVM_ATOMICS                = b'000001000'
 
     ! cl_device_info - NVIDIA extensions
     integer(c_int32_t), parameter :: CL_DEVICE_COMPUTE_CAPABILITY_MAJOR_NV      = Z'4000'
@@ -256,8 +334,10 @@ module clfortran
     integer(c_int64_t), parameter :: CL_EXEC_NATIVE_KERNEL                      = b'10'
 
     ! cl_command_queue_properties - bitfield
-    integer(c_int64_t), parameter :: CL_QUEUE_OUT_OF_ORDER_EXEC_MODE_ENABLE     = b'01'
-    integer(c_int64_t), parameter :: CL_QUEUE_PROFILING_ENABLE                  = b'10'
+    integer(c_int64_t), parameter :: CL_QUEUE_OUT_OF_ORDER_EXEC_MODE_ENABLE     = b'0001'
+    integer(c_int64_t), parameter :: CL_QUEUE_PROFILING_ENABLE                  = b'0010'
+    integer(c_int64_t), parameter :: CL_QUEUE_ON_DEVICE                         = b'0100'
+    integer(c_int64_t), parameter :: CL_QUEUE_ON_DEVICE_DEFAULT                 = b'1000'
 
     ! cl_context_info
     integer(c_int32_t), parameter :: CL_CONTEXT_REFERENCE_COUNT                 = Z'1080'
@@ -266,29 +346,38 @@ module clfortran
     integer(c_int32_t), parameter :: CL_CONTEXT_NUM_DEVICES                     = Z'1083'
 
     ! cl_context_properties type(c_ptr)
-    integer(c_intptr_t), parameter :: CL_CONTEXT_PLATFORM                         = Z'1084'
-    integer(c_intptr_t), parameter :: CL_CONTEXT_INTEROP_USER_SYNC                = Z'1085'
+    integer(c_intptr_t), parameter :: CL_CONTEXT_PLATFORM                       = Z'1084'
+    integer(c_intptr_t), parameter :: CL_CONTEXT_INTEROP_USER_SYNC              = Z'1085'
 
     ! cl_command_queue_info
     integer(c_int32_t), parameter :: CL_QUEUE_CONTEXT                           = Z'1090'
     integer(c_int32_t), parameter :: CL_QUEUE_DEVICE                            = Z'1091'
     integer(c_int32_t), parameter :: CL_QUEUE_REFERENCE_COUNT                   = Z'1092'
     integer(c_int32_t), parameter :: CL_QUEUE_PROPERTIES                        = Z'1093'
+    integer(c_int32_t), parameter :: CL_QUEUE_SIZE                              = Z'1094'
+    integer(c_int32_t), parameter :: CL_QUEUE_DEVICE_DEFAULT                    = Z'1095'
 
     ! cl_mem_flags - bitfield (int64)
-    integer(c_int64_t), parameter :: CL_MEM_READ_WRITE                          = b'0000000001'
-    integer(c_int64_t), parameter :: CL_MEM_WRITE_ONLY                          = b'0000000010'
-    integer(c_int64_t), parameter :: CL_MEM_READ_ONLY                           = b'0000000100'
-    integer(c_int64_t), parameter :: CL_MEM_USE_HOST_PTR                        = b'0000001000'
-    integer(c_int64_t), parameter :: CL_MEM_ALLOC_HOST_PTR                      = b'0000010000'
-    integer(c_int64_t), parameter :: CL_MEM_COPY_HOST_PTR                       = b'0000100000'
-    !integer(c_int64_t), parameter :: reserved                                  = b'0001000000'
-    integer(c_int64_t), parameter :: CL_MEM_HOST_WRITE_ONLY                     = b'0010000000'
-    integer(c_int64_t), parameter :: CL_MEM_HOST_READ_ONLY                      = b'0100000000'
-    integer(c_int64_t), parameter :: CL_MEM_HOST_NO_ACCESS                      = b'1000000000'
+    integer(c_int64_t), parameter :: CL_MEM_READ_WRITE                          = b'00000000000001'
+    integer(c_int64_t), parameter :: CL_MEM_WRITE_ONLY                          = b'00000000000010'
+    integer(c_int64_t), parameter :: CL_MEM_READ_ONLY                           = b'00000000000100'
+    integer(c_int64_t), parameter :: CL_MEM_USE_HOST_PTR                        = b'00000000001000'
+    integer(c_int64_t), parameter :: CL_MEM_ALLOC_HOST_PTR                      = b'00000000010000'
+    integer(c_int64_t), parameter :: CL_MEM_COPY_HOST_PTR                       = b'00000000100000'
+    !integer(c_int64_t), parameter :: reserved                                  = b'00000001000000'
+    integer(c_int64_t), parameter :: CL_MEM_HOST_WRITE_ONLY                     = b'00000010000000'
+    integer(c_int64_t), parameter :: CL_MEM_HOST_READ_ONLY                      = b'00000100000000'
+    integer(c_int64_t), parameter :: CL_MEM_HOST_NO_ACCESS                      = b'00001000000000'
+    integer(c_int64_t), parameter :: CL_MEM_SVM_FINE_GRAIN_BUFFER               = b'00010000000000'
+    integer(c_int64_t), parameter :: CL_MEM_SVM_ATOMICS                         = b'00100000000000'
+    integer(c_int64_t), parameter :: CL_MEM_KERNEL_READ_AND_WRITE               = b'01000000000000'
 
     ! cl_buffer_create_type
     integer(c_int32_t), parameter :: CL_BUFFER_CREATE_TYPE_REGION               = Z'1220'
+
+    ! cl_mem_migration_flags - bitfield
+    integer(c_int32_t), parameter :: CL_MIGRATE_MEM_OBJECT_HOST                 = b'0001'
+    integer(c_int32_t), parameter :: CL_MIGRATE_MEM_OBJECT_CONTENT_UNDEFINED    = b'0010'
 
     ! cl_channel_order
     integer(c_int32_t), parameter :: CL_R                                       = Z'10B0'
@@ -306,6 +395,11 @@ module clfortran
     integer(c_int32_t), parameter :: CL_RGBx                                    = Z'10BC'
     integer(c_int32_t), parameter :: CL_DEPTH                                   = Z'10BD'
     integer(c_int32_t), parameter :: CL_DEPTH_STENCIL                           = Z'10BE'
+    integer(c_int32_t), parameter :: CL_sRGB                                    = Z'10BF'
+    integer(c_int32_t), parameter :: CL_sRGBx                                   = Z'10C0'
+    integer(c_int32_t), parameter :: CL_sRGBA                                   = Z'10C1'
+    integer(c_int32_t), parameter :: CL_sBGRA                                   = Z'10C2'
+    integer(c_int32_t), parameter :: CL_ABGR                                    = Z'10C3'
 
     ! cl_channel_type
     integer(c_int32_t), parameter :: CL_SNORM_INT8                              = Z'10D0'
@@ -324,6 +418,7 @@ module clfortran
     integer(c_int32_t), parameter :: CL_HALF_FLOAT                              = Z'10DD'
     integer(c_int32_t), parameter :: CL_FLOAT                                   = Z'10DE'
     integer(c_int32_t), parameter :: CL_UNORM_INT24                             = Z'10DF'
+    integer(c_int32_t), parameter :: CL_UNORM_INT_101010_2                      = Z'10E0'
 
     ! cl_mem_object_type
     integer(c_int32_t), parameter :: CL_MEM_OBJECT_BUFFER                       = Z'10F0'
@@ -333,6 +428,7 @@ module clfortran
     integer(c_int32_t), parameter :: CL_MEM_OBJECT_IMAGE1D                      = Z'10F4'
     integer(c_int32_t), parameter :: CL_MEM_OBJECT_IMAGE1D_ARRAY                = Z'10F5'
     integer(c_int32_t), parameter :: CL_MEM_OBJECT_IMAGE1D_BUFFER               = Z'10F6'
+    integer(c_int32_t), parameter :: CL_MEM_OBJECT_PIPE                         = Z'10F7'
     
     ! cl_mem_info
     integer(c_int32_t), parameter :: CL_MEM_TYPE                                = Z'1100'
@@ -344,6 +440,7 @@ module clfortran
     integer(c_int32_t), parameter :: CL_MEM_CONTEXT                             = Z'1106'
     integer(c_int32_t), parameter :: CL_MEM_ASSOCIATED_MEMOBJECT                = Z'1107'
     integer(c_int32_t), parameter :: CL_MEM_OFFSET                              = Z'1108'
+    integer(c_int32_t), parameter :: CL_MEM_USES_SVM_POINTER                    = Z'1109'
 
     ! cl_image_info - Note that INFO was added to resolve naming conflicts.
     integer(c_int32_t), parameter :: CL_IMAGE_INFO_FORMAT                       = Z'1110'
@@ -357,7 +454,11 @@ module clfortran
     integer(c_int32_t), parameter :: CL_IMAGE_INFO_BUFFER                       = Z'1118'
     integer(c_int32_t), parameter :: CL_IMAGE_INFO_NUM_MIP_LEVELS               = Z'1119'
     integer(c_int32_t), parameter :: CL_IMAGE_INFO_NUM_SAMPLES                  = Z'111A'
-    
+
+    ! cl_pipe_info
+    integer(c_int32_t), parameter :: CL_PIPE_PACKET_SIZE                        = Z'1120'
+    integer(c_int32_t), parameter :: CL_PIPE_MAX_PACKETS                        = Z'1121'
+
     ! cl_addressing_mode
     integer(c_int32_t), parameter :: CL_ADDRESS_NONE                            = Z'1130'
     integer(c_int32_t), parameter :: CL_ADDRESS_CLAMP_TO_EDGE                   = Z'1131'
@@ -375,7 +476,15 @@ module clfortran
     integer(c_int32_t), parameter :: CL_SAMPLER_NORMALIZED_COORDS               = Z'1152'
     integer(c_int32_t), parameter :: CL_SAMPLER_ADDRESSING_MODE                 = Z'1153'
     integer(c_int32_t), parameter :: CL_SAMPLER_FILTER_MODE                     = Z'1154'
+    integer(c_int32_t), parameter :: CL_SAMPLER_MIP_FILTER_MODE                 = Z'1155'
+    integer(c_int32_t), parameter :: CL_SAMPLER_LOD_MIN                         = Z'1156'
+    integer(c_int32_t), parameter :: CL_SAMPLER_LOD_MAX                         = Z'1157'
     
+    ! cl_map_flags - bitfield
+    integer(c_int32_t), parameter :: CL_MAP_READ                                = b'0001'
+    integer(c_int32_t), parameter :: CL_MAP_WRITE                               = b'0010'
+    integer(c_int32_t), parameter :: CL_MAP_WRITE_INVALIDATE_REGION             = b'0100'
+
     ! cl_program_info
     integer(c_int32_t), parameter :: CL_PROGRAM_REFERENCE_COUNT                 = Z'1160'
     integer(c_int32_t), parameter :: CL_PROGRAM_CONTEXT                         = Z'1161'
@@ -386,13 +495,17 @@ module clfortran
     integer(c_int32_t), parameter :: CL_PROGRAM_BINARIES                        = Z'1166'
     integer(c_int32_t), parameter :: CL_PROGRAM_NUM_KERNELS                     = Z'1167'
     integer(c_int32_t), parameter :: CL_PROGRAM_KERNEL_NAMES                    = Z'1168'
+    integer(c_int32_t), parameter :: CL_PROGRAM_IL                              = Z'1169'
+    integer(c_int32_t), parameter :: CL_PROGRAM_SCOPE_GLOBAL_CTORS_PRESENT      = Z'116A'
+    integer(c_int32_t), parameter :: CL_PROGRAM_SCOPE_GLOBAL_DTORS_PRESENT      = Z'116B'
 
     ! cl_program_build_info
     integer(c_int32_t), parameter :: CL_PROGRAM_BUILD_STATUS                    = Z'1181'
     integer(c_int32_t), parameter :: CL_PROGRAM_BUILD_OPTIONS                   = Z'1182'
     integer(c_int32_t), parameter :: CL_PROGRAM_BUILD_LOG                       = Z'1183'
     integer(c_int32_t), parameter :: CL_PROGRAM_BINARY_TYPE                     = Z'1184'
-    
+    integer(c_int32_t), parameter :: CL_PROGRAM_BUILD_GLOBAL_VARIABLE_TOTAL_SIZE= Z'1185'
+
     ! cl_program_binary_type
     integer(c_int32_t), parameter :: CL_PROGRAM_BINARY_TYPE_NONE                = Z'0'
     integer(c_int32_t), parameter :: CL_PROGRAM_BINARY_TYPE_COMPILED_OBJECT     = Z'1'
@@ -412,6 +525,8 @@ module clfortran
     integer(c_int32_t), parameter :: CL_KERNEL_CONTEXT                          = Z'1193'
     integer(c_int32_t), parameter :: CL_KERNEL_PROGRAM                          = Z'1194'
     integer(c_int32_t), parameter :: CL_KERNEL_ATTRIBUTES                       = Z'1195'
+    integer(c_int32_t), parameter :: CL_KERNEL_MAX_NUM_SUB_GROUPS               = Z'11B9'
+    integer(c_int32_t), parameter :: CL_KERNEL_COMPILE_NUM_SUB_GROUPS           = Z'11BA'
 
     ! cl_kernel_arg_info
     integer(c_int32_t), parameter :: CL_KERNEL_ARG_ADDRESS_QUALIFIER            = Z'1196'
@@ -433,10 +548,11 @@ module clfortran
     integer(c_int32_t), parameter :: CL_KERNEL_ARG_ACCESS_NONE                  = Z'11A3'
     
     ! cl_kernel_arg_type_qualifer - bitfield (int64)
-    integer(c_int64_t), parameter :: CL_KERNEL_ARG_TYPE_NONE                    = b'000'
-    integer(c_int64_t), parameter :: CL_KERNEL_ARG_TYPE_CONST                   = b'001'
-    integer(c_int64_t), parameter :: CL_KERNEL_ARG_TYPE_RESTRICT                = b'010'
-    integer(c_int64_t), parameter :: CL_KERNEL_ARG_TYPE_VOLATILE                = b'100'
+    integer(c_int64_t), parameter :: CL_KERNEL_ARG_TYPE_NONE                    = b'0000'
+    integer(c_int64_t), parameter :: CL_KERNEL_ARG_TYPE_CONST                   = b'0001'
+    integer(c_int64_t), parameter :: CL_KERNEL_ARG_TYPE_RESTRICT                = b'0010'
+    integer(c_int64_t), parameter :: CL_KERNEL_ARG_TYPE_VOLATILE                = b'0100'
+    integer(c_int64_t), parameter :: CL_KERNEL_ARG_TYPE_PIPE                    = b'1000'
 
     ! cl_kernel_work_group_info
     integer(c_int32_t), parameter :: CL_KERNEL_WORK_GROUP_SIZE                  = Z'11B0'
@@ -446,6 +562,15 @@ module clfortran
     integer(c_int32_t), parameter :: CL_KERNEL_PRIVATE_MEM_SIZE                 = Z'11B4'
     integer(c_int32_t), parameter :: CL_KERNEL_GLOBAL_WORK_SIZE                 = Z'11B5'
     
+    ! cl_kernel_sub_group_info
+    integer(c_int32_t), parameter :: CL_KERNEL_MAX_SUB_GROUP_SIZE_FOR_NDRANGE   = Z'2033'
+    integer(c_int32_t), parameter :: CL_KERNEL_SUB_GROUP_COUNT_FOR_NDRANGE      = Z'2034'
+    integer(c_int32_t), parameter :: CL_KERNEL_LOCAL_SIZE_FOR_SUB_GROUP_COUNT   = Z'11B8'
+
+    ! cl_kernel_exec_info
+    integer(c_int32_t), parameter :: CL_KERNEL_EXEC_INFO_SVM_PTRS               = Z'11B6'
+    integer(c_int32_t), parameter :: CL_KERNEL_EXEC_INFO_SVM_FINE_GRAIN_SYSTEM  = Z'11B7'
+
     ! cl_event_info
     integer(c_int32_t), parameter :: CL_EVENT_COMMAND_QUEUE                     = Z'11D0'
     integer(c_int32_t), parameter :: CL_EVENT_COMMAND_TYPE                      = Z'11D1'
@@ -453,11 +578,51 @@ module clfortran
     integer(c_int32_t), parameter :: CL_EVENT_COMMAND_EXECUTION_STATUS          = Z'11D3'
     integer(c_int32_t), parameter :: CL_EVENT_CONTEXT                           = Z'11D4'
     
+    ! cl_command_type
+    integer(c_int32_t), parameter :: CL_COMMAND_NDRANGE_KERNEL                  = Z'11F0'
+    integer(c_int32_t), parameter :: CL_COMMAND_TASK                            = Z'11F1'
+    integer(c_int32_t), parameter :: CL_COMMAND_NATIVE_KERNEL                   = Z'11F2'
+    integer(c_int32_t), parameter :: CL_COMMAND_READ_BUFFER                     = Z'11F3'
+    integer(c_int32_t), parameter :: CL_COMMAND_WRITE_BUFFER                    = Z'11F4'
+    integer(c_int32_t), parameter :: CL_COMMAND_COPY_BUFFER                     = Z'11F5'
+    integer(c_int32_t), parameter :: CL_COMMAND_READ_IMAGE                      = Z'11F6'
+    integer(c_int32_t), parameter :: CL_COMMAND_WRITE_IMAGE                     = Z'11F7'
+    integer(c_int32_t), parameter :: CL_COMMAND_COPY_IMAGE                      = Z'11F8'
+    integer(c_int32_t), parameter :: CL_COMMAND_COPY_IMAGE_TO_BUFFER            = Z'11F9'
+    integer(c_int32_t), parameter :: CL_COMMAND_COPY_BUFFER_TO_IMAGE            = Z'11FA'
+    integer(c_int32_t), parameter :: CL_COMMAND_MAP_BUFFER                      = Z'11FB'
+    integer(c_int32_t), parameter :: CL_COMMAND_MAP_IMAGE                       = Z'11FC'
+    integer(c_int32_t), parameter :: CL_COMMAND_UNMAP_MEM_OBJECT                = Z'11FD'
+    integer(c_int32_t), parameter :: CL_COMMAND_MARKER                          = Z'11FE'
+    integer(c_int32_t), parameter :: CL_COMMAND_ACQUIRE_GL_OBJECTS              = Z'11FF'
+    integer(c_int32_t), parameter :: CL_COMMAND_RELEASE_GL_OBJECTS              = Z'1200'
+    integer(c_int32_t), parameter :: CL_COMMAND_READ_BUFFER_RECT                = Z'1201'
+    integer(c_int32_t), parameter :: CL_COMMAND_WRITE_BUFFER_RECT               = Z'1202'
+    integer(c_int32_t), parameter :: CL_COMMAND_COPY_BUFFER_RECT                = Z'1203'
+    integer(c_int32_t), parameter :: CL_COMMAND_USER                            = Z'1204'
+    integer(c_int32_t), parameter :: CL_COMMAND_BARRIER                         = Z'1205'
+    integer(c_int32_t), parameter :: CL_COMMAND_MIGRATE_MEM_OBJECTS             = Z'1206'
+    integer(c_int32_t), parameter :: CL_COMMAND_FILL_BUFFER                     = Z'1207'
+    integer(c_int32_t), parameter :: CL_COMMAND_FILL_IMAGE                      = Z'1208'
+    integer(c_int32_t), parameter :: CL_COMMAND_SVM_FREE                        = Z'1209'
+    integer(c_int32_t), parameter :: CL_COMMAND_SVM_MEMCPY                      = Z'120A'
+    integer(c_int32_t), parameter :: CL_COMMAND_SVM_MEMFILL                     = Z'120B'
+    integer(c_int32_t), parameter :: CL_COMMAND_SVM_MAP                         = Z'120C'
+    integer(c_int32_t), parameter :: CL_COMMAND_SVM_UNMAP                       = Z'120D'
+
+    
+    ! command execution status
+    integer(c_int32_t), parameter :: CL_COMPLETE                                = Z'0000'
+    integer(c_int32_t), parameter :: CL_RUNNING                                 = Z'0001'
+    integer(c_int32_t), parameter :: CL_SUBMITTED                               = Z'0002'
+    integer(c_int32_t), parameter :: CL_QUEUED                                  = Z'0003'
+ 
     ! cl_profiling_info
     integer(c_int32_t), parameter :: CL_PROFILING_COMMAND_QUEUED                = Z'1280'
     integer(c_int32_t), parameter :: CL_PROFILING_COMMAND_SUBMIT                = Z'1281'
     integer(c_int32_t), parameter :: CL_PROFILING_COMMAND_START                 = Z'1282'
     integer(c_int32_t), parameter :: CL_PROFILING_COMMAND_END                   = Z'1283'
+    integer(c_int32_t), parameter :: CL_PROFILING_COMMAND_COMPLETE              = Z'1284'
     
     ! ------------
     ! Types
@@ -1312,7 +1477,7 @@ module clfortran
             USE ISO_C_BINDING
             
             ! Define parameters.
-            integer(c_int32_t), value :: context
+            integer(c_intptr_t), value :: context
             integer(c_int32_t), intent(out) :: errcode_ret
             
         end function
